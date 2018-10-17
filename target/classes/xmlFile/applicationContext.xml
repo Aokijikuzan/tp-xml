@@ -4,12 +4,20 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="myObject1" class="MyObject">
+	<context:property-placeholder location="classpath:application.properties" />
+
+	<bean id="myObjectParent" class="spring.tp_xml.MyObject">
+		<property name="name" value="PapaMyObject" />
+	</bean>
+	<bean id="myObject1" class="spring.tp_xml.MyObject">
 		<property name="id" value="0" />
 		<property name="name" value="James" />
-
-		<property name="parent" ref=" "/>
-	
+		<property name="parent" ref="myObjectParent" />
+	</bean>
+	<bean id="myObject2" class="spring.tp_xml.MyObject">
+		<property name="id" value="1" />
+		<property name="name" value="Kyōraku" />
+		<property name="parent" ref="myObjectParent" />
 	</bean>
 </beans>
  
